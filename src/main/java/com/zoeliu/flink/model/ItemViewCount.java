@@ -1,4 +1,4 @@
-package com.zoeliu.flink;
+package com.zoeliu.flink.model;
 
 public class ItemViewCount {
     public String itemId;

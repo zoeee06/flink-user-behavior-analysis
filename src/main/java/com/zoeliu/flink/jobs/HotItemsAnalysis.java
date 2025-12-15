@@ -1,5 +1,7 @@
-package com.zoeliu.flink;
+package com.zoeliu.flink.jobs;
 
+import com.zoeliu.flink.model.ItemViewCount;
+import com.zoeliu.flink.model.UserBehavior;
 import org.apache.flink.api.common.eventtime.SerializableTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.AggregateFunction;
