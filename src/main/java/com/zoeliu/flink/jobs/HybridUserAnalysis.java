@@ -45,7 +45,7 @@ public class HybridUserAnalysis {
         // 2. Core Logic for writing daily report
         SingleOutputStreamOperator<String> reportStream = dataStream
                 .keyBy(data -> data.userId)
-                .process(new DualPurposeProcess(10));
+                .process(new DualPurposeProcess(20));
 
         // 3. Processing side output stream (Alert -> Console)
         // Retrieve the Tag defined in our ProcessFunction
@@ -88,7 +88,8 @@ public class HybridUserAnalysis {
 
             // Core logic for real-time alert
             if (currentCount == alertThreshold) {
-                String alertMsg = "User " + value.userId + " has hit threshold " + currentCount;
+                String alertMsg = String.format("[RISK DETECTED] Time:%d | User:%s | Action: Threshold Exceeded (%d)",
+                        value.timestamp, value.userId, currentCount);
                 ctx.output(alertTag, alertMsg);
             }
 
